@@ -19,18 +19,27 @@ public class App {
 
     private void getBmiResul(Scanner scanner) {
         float weight = 0, height = 0;
-        double bmi;
+        double bmi=0.0;
         try {
             System.out.println("Enter you weight in (lbs)");
             weight = Float.parseFloat(scanner.nextLine());
 
             System.out.println("Enter you height in (in)");
             height = Float.parseFloat(scanner.nextLine());
+
+            bmi = getBmi(height,weight);
+
+            displayResutls(bmi);
         } catch (Exception e) {
             System.out.println(" Invalid entry.");
         }
 
-        bmi = (weight / (height * height)) * 703;
+
+
+
+    }
+
+    private void displayResutls(double bmi) {
 
         System.out.printf("Your BMI is %.2f \n", bmi);
 
@@ -42,5 +51,12 @@ public class App {
             System.out.println("You are within the ideal weight range.");
         }
 
+    }
+
+    private double getBmi(float height, float weight) {
+        double bmi=0.0;
+
+        bmi = (weight / (height * height)) * 703;
+        return bmi;
     }
 }
